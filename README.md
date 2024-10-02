@@ -6,7 +6,8 @@ Este aplicativo tem por objetivo avaliar o desenvolvimento de códigos em Angula
 
 Seu objetivo é controlar os alugueis de veículos de uma locadora, lendo arquivos de entrada de dados e gerando relatórios.
 
-Desenvolva as telas apresentadas nas imagens que se encontram na pasta 'telas' deste repositório.
+Crie uma nova branch com seu nome a partir da Master, desenvolva as telas apresentadas nas imagens que se encontram na pasta 'telas' deste repositório e submita um pull request
+no projeto.
 * Seja o mais fiel possível ao layout apresentado.
 * Respeite a estrutura de menus apresentada.
 * Caso necessário, consuma a APi fornecida para obter os dados necessários.
