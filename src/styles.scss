@@ -1,0 +1,15 @@
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "assets/themes/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+.text-error {
+  color: #dc143c;
+}

@@ -1,0 +1,28 @@
+@if (isOpenMenu) {
+<div class="flex justify-content-end align-items-center pr-1 pt-2">
+  <p-button icon="pi pi-times" (click)="exibirMenu()" [text]="true"></p-button>
+</div>
+} @else {
+<div class="flex justify-content-end align-items-center pr-1 pt-2">
+  <p-button icon="pi pi-bars" (click)="exibirMenu()" [text]="true"></p-button>
+</div>
+}
+
+<p-menu [model]="items" styleClass="border-none w-full h-full pt-3">
+  <ng-template pTemplate="item" let-item>
+    <a
+      *ngIf="!item?.url"
+      [attr.tabindex]="-1"
+      class="p-menuitem-link align-items-center"
+      [routerLink]="item.routerLink"
+      [@toogleMenuItems]="isOpenLabels"
+    >
+      <div class="label-menu gap-3">
+        <div class="icon-width"><span [class]="item.icon"></span></div>
+        <div>
+          <span [@toogleLabels]="isOpenLabels"> {{ item.label }}</span>
+        </div>
+      </div>
+    </a>
+  </ng-template>
+</p-menu>

@@ -1,0 +1,17 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 16rem;
+  height: 100%;
+  box-shadow: 0 0 4px 0 #dcdee4;
+  padding-top: 4.5rem;
+  z-index: 1;
+}
+
+.content{
+  margin-left: 16rem;
+  padding-top: 4.5rem;
+  padding-left: 1rem;
+
+}

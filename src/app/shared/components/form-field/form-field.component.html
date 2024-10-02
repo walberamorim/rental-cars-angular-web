@@ -1,0 +1,31 @@
+<div class="flex flex-column gap-2">
+  @if (label) {
+  <label [for]="id"
+    >{{ label }}
+    @if (hasRequired()) {
+    <span class="text-error">*</span>
+    }
+  </label>
+  }
+  <ng-content></ng-content>
+
+  @if (input.invalid && input.dirty) {
+  <div>
+    @if (input.errors?.['required']) {
+    <small class="p-error"
+      ><strong>{{ label }}</strong> é obrigatório.</small
+    >
+    } @if (input.errors?.['minlength']) {
+    <small class="p-error"
+      ><strong>{{ label }}</strong> deve ter no mínimo
+      {{ input.errors?.['minlength'].requiredLength }} caracteres.</small
+    >
+    } @if (input.errors?.['maxlength']) {
+    <small class="p-error"
+      ><strong>{{ label }}</strong> deve ter no máximo
+      {{ input.errors?.['maxlength'].requiredLength }} caracteres.</small
+    >
+    }
+  </div>
+  }
+</div>

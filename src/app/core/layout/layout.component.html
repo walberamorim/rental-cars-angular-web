@@ -1,0 +1,51 @@
+<app-header [items]="items"></app-header>
+<main>
+  <div class="sidebar" [@toogleSidebar]="hasOpen()">
+    <app-side-menu
+      (toogle)="exibirMenu($event)"
+      [items]="items"
+      [isOpenLabels]="hasOpen()"
+    ></app-side-menu>
+  </div>
+  <div class="content" [@toogleContent]="hasOpen()">
+    <p-toast key="app"></p-toast>
+    <p-confirmDialog #cd key="app">
+      <ng-template pTemplate="headless" let-message>
+        <div
+          class="flex flex-column align-items-center p-5 surface-overlay border-round"
+        >
+          <div
+            class="border-circle bg-primary inline-flex justify-content-center align-items-center h-6rem w-6rem -mt-8"
+          >
+            <i class="pi pi-question text-5xl"></i>
+          </div>
+          <span class="font-bold text-2xl block mb-2 mt-4">{{
+            message.header
+          }}</span>
+          <p class="mb-0">{{ message.message }}</p>
+          <div class="flex align-items-center gap-2 mt-4">
+            <button
+              pButton
+              label="Não"
+              (click)="cd.reject()"
+              class="p-button-outlined w-8rem"
+            ></button>
+            <button
+              pButton
+              label="Sim"
+              (click)="cd.accept()"
+              class="w-8rem"
+            ></button>
+          </div>
+        </div>
+      </ng-template>
+    </p-confirmDialog>
+    <p-breadcrumb
+      styleClass="border-none"
+      [model]="breadcumbs"
+      [home]="breadcumbsHome"
+    ></p-breadcrumb>
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<app-footer></app-footer>
