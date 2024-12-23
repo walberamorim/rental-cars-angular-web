@@ -1,0 +1,66 @@
+<p-toast />
+
+<h2 class="titulo">Upload de arquivos</h2>
+<p-divider />
+
+<div class="flex align-items-center justify-content-between gap-3">
+  <div class="p-fluid">
+    <p-fileUpload invalidFileLimitMessageDetail="O arquivo deve ter tamanho maximo de 10MB."
+      invalidFileTypeMessageDetail="O arquivo deve ter a extensão .rtn" #componenteUpload name="file"
+      url="http://localhost:8080/api/alugueis/importar-arquivo" [multiple]="false" accept=".rtn" maxFileSize="10000000"
+      (onError)="onError()" (onProgress)="onProgress($event)" (onUpload)="onTemplatedUpload()"
+      (onSelect)="onSelectedFiles($event)">
+      <ng-template pTemplate="header">
+
+      </ng-template>
+      <ng-template pTemplate="file" let-clearCallback="clearCallback">
+        @if(loading){
+        <div class="flex align-items-center gap-3">
+          <i class="icon-upload fa fa-file-image-o text-7xl"></i>
+          <div class="p-fluid flex-column justify-content-center align-items-center">
+            <div class="flex justify-content-between align-items-center">
+              <p class="mb-0 mt-0">{{selectedFile?.name}}</p>
+              <p class="mb-0 mt-0">{{fileSize}}</p>
+            </div>
+            <p-progressBar [value]="uploadProgress" [showValue]="false" styleClass="h-1rem w-full md:ml-auto p-relative"
+              [style]="{'position':'relative'}" [ngClass]="{ 'exceeded-progress-bar': uploadProgress > 100 }">
+            </p-progressBar>
+          </div>
+        </div>
+        } @else{
+        <div class="flex align-items-center justify-content-between">
+          <div class="flex justify-content-center align-items-center gap-3">
+            <i class="icon-upload fa fa-file-image-o text-7xl"></i>
+            <p class="mb-0 mt-0">{{selectedFile?.name}}</p>
+          </div>
+
+          <div class="flex justify-content-center align-items-center gap-3">
+            <p class="mb-0 mt-0">{{fileSize}}</p>
+            <p-button (onClick)="clearFile()" severity="danger" icon="fa fa-trash" class="mr-2" pStyleClass=".box"
+              roudend="true" text="true" enterFromClass="hidden" enterActiveClass="fadein" size="large" />
+          </div>
+        </div>
+        }
+
+      </ng-template>
+      <ng-template pTemplate="empty">
+        <div class="flex align-items-center justify-content-between">
+          <i class="icon-upload fa fa-cloud-upload text-8xl"></i>
+          <div class=" text-center">
+            <p class=""><b>Selecione ou arraste um arquivo <span class="text-red">*</span></b></p>
+            <p class="mt-3 mb-1">Tipo: RTN</p>
+            <p class="mt-0">O tamanho do arquivo não pode ser maior que 10MB.</p>
+          </div>
+          <p-button (onClick)="choose()" label="Selecionar" class="mr-2" pStyleClass=".box" outlined="true"
+            enterFromClass="hidden" enterActiveClass="fadein" size="large" />
+        </div>
+      </ng-template>
+    </p-fileUpload>
+  </div>
+
+  <p-button (onClick)="processFile()" [disabled]="!selectedFile" label="Processar Arquivo" class="mr-2"
+    pStyleClass=".box" outlined="false" enterFromClass="hidden" enterActiveClass="fadein" size="large" />
+</div>
+<div>
+
+</div>

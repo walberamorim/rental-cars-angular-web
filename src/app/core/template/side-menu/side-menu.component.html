@@ -10,7 +10,7 @@
 
 <p-menu [model]="items" styleClass="border-none w-full h-full pt-3">
   <ng-template pTemplate="item" let-item>
-    <a
+    <a routerLinkActive="is-active"
       *ngIf="!item?.url"
       [attr.tabindex]="-1"
       class="p-menuitem-link align-items-center"

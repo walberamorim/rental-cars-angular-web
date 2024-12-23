@@ -1,1 +1,10 @@
-<h2 class="title">{{ title }}</h2>
+<div>
+    <h2 [ngStyle]="{color: 'var(--primary-500)'}" class="text-5xl m-0">
+      {{title}}
+    </h2>
+    <h3 [ngStyle]="{color: 'var(--primary-800)'}" class="mt-2 mb-0">
+      {{subtitle}}
+    </h3>
+
+    <p-divider/>
+  </div>

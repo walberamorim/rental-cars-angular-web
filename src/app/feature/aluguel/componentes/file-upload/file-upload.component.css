@@ -1,0 +1,19 @@
+.icon-upload{
+    color: var(--primary-500) !important;
+  }
+
+  .text-red{
+    color: red
+  }
+
+  .titulo{
+    color: var(--primary-800)
+  }
+
+  .p-fluid{
+    flex: 1
+  }
+
+  .p-relative{
+    position: relative !important;
+  }

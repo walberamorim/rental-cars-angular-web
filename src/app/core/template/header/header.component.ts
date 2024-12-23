@@ -33,6 +33,8 @@ export class HeaderComponent implements OnInit {
   }
 
   async getUserPrincipal() {
+    this.username = "Walber de Almeida Amorim";
+    this.initialsName = "W";
     // if (await this.keyCloakService.isLoggedIn()) {
     //   const userPrincipal = this.keyCloakService.loadUserProfile();
     //   this.username =

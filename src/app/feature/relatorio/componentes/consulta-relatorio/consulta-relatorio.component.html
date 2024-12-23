@@ -1,0 +1,65 @@
+<div class="my-3 flex align-items-end gap-5">
+  <!-- <span id="dataAluguel">Data do aluguel</span> -->
+  <div class="">
+    <label for="dataAluguel" class="font-bold block mb-2"> Data do aluguel </label>
+    <p-calendar 
+  id="dataAluguel"
+    [(ngModel)]="dataAluguelSelecionada" 
+    name="dataAluguelSelecionada" 
+    [iconDisplay]="'input'" 
+    [showIcon]="true"
+    dateFormat="dd/mm/yy"
+    inputId="icondisplay" />
+  </div>
+  
+
+    <!-- <span id="modeloCarro">Modelo do carro</span> -->
+    <div class="">
+      <label for="modeloCarro" class="font-bold block mb-2"> Modelo do carro </label>
+    <p-dropdown 
+    id="modeloCarro"
+    [options]="listaModeloCarro" 
+    [(ngModel)]="modeloSelecionado"
+    name="modeloSelecionado"
+    optionLabel="name"
+    [checkmark]="true"
+    [showClear]="true"
+    placeholder="Selecione o modelo" />
+  </div>
+
+  <p-button (onClick)="onChangeFiltro($event)" label="Buscar" icon="fa fa-search" class="mr-2" pStyleClass=".box"
+            enterFromClass="hidden" enterActiveClass="fadein" />
+</div>
+
+<p-table (sortFunction)="customSort($event)" #dt [customSort]="true" [value]="listaTabela" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+      <tr>
+          <th pSortableColumn="dataAluguel">DATA<p-sortIcon field="dataAluguel" /></th>
+          <th pSortableColumn="modelo">MODELO<p-sortIcon field="modelo" /></th>
+          <th pSortableColumn="km">KM<p-sortIcon field="km" /></th>
+          <th pSortableColumn="cliente">CLIENTE<p-sortIcon field="cliente" /></th>
+          <th pSortableColumn="telefone">TELEFONE<p-sortIcon field="telefone" /></th>
+          <th pSortableColumn="dataDevolucao">DEVOLUÇÃO<p-sortIcon field="dataDevolucao" /></th>
+          <th pSortableColumn="pago">PAGO<p-sortIcon field="pago" /></th>
+          <th pSortableColumn="valor">VALOR<p-sortIcon field="valor" /></th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item>
+      <tr>
+          <td>{{ item.dataAluguel }}</td>
+          <td>{{ item.modelo }}</td>
+          <td>{{ item.km }}</td>
+          <td>{{ item.cliente }}</td>
+          <td>{{ item.telefone }}</td>
+          <td>{{ item.dataDevolucao }}</td>
+          <td><p-tag [value]="item.pago" [severity]="item.pago == 'SIM' ? 'success' : 'danger'" /></td>
+          <td>R$ {{ item.valor }}</td>
+
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="d-block text-right">
+        Soma dos débitos: R$ {{valorTotal}}
+    </div>
+</ng-template>
+</p-table>
